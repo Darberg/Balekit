@@ -60,14 +60,14 @@ export { Sticker, type StickerPayload } from './sticker/Sticker';
 export { StickerSet, type StickerSetPayload } from './sticker/StickerSet';
 export type { InputSticker } from './sticker/InputSticker';
 
-export type {
-  LabeledPrice,
-  LabeledPricePayload,
-} from './LabeledPrice';
+export type { LabeledPrice, LabeledPricePayload } from './LabeledPrice';
 
 export { Invoice, type InvoicePayload } from './Invoice';
 export type { SuccessfulPaymentPayload } from './payment/SuccessfulPayment';
-export { PreCheckoutQuery, type PreCheckoutQueryPayload } from './payment/PreCheckoutQuery';
+export {
+  PreCheckoutQuery,
+  type PreCheckoutQueryPayload,
+} from './payment/PreCheckoutQuery';
 export {
   Transaction,
   type TransactionPayload,

@@ -164,7 +164,6 @@ export class Message {
     return new Date(this.date * 1000);
   }
 
-
   /**
    * Reply to this message. Uses bot attached by UpdateHandler, or pass bot as first arg.
    */
@@ -193,8 +192,6 @@ export class Message {
     });
   }
 }
-
-
 
 export interface SendMessageOptions {
   parse_mode?: string;

@@ -218,8 +218,8 @@ export class ApiClient {
     chatId: number,
     text: string,
     options?: {
-      reply_to_message_id?: number,
-      reply_markup?: ReplyMarkup
+      reply_to_message_id?: number;
+      reply_markup?: ReplyMarkup;
     }
   ): Promise<unknown> {
     return this.request('sendMessage', {
@@ -279,7 +279,7 @@ export class ApiClient {
       chat_id: chatId,
       from_chat_id: fromChatId,
       photo: photo,
-       ...options,
+      ...options,
     });
   }
 
@@ -397,9 +397,9 @@ export class ApiClient {
   }
 
   /**
-  * ارسال موقعیت مکانی
-  * @see https://docs.bale.ai/#location
-  */
+   * ارسال موقعیت مکانی
+   * @see https://docs.bale.ai/#location
+   */
   sendLocation(
     chatId: string | number,
     latitude: number,
@@ -421,9 +421,9 @@ export class ApiClient {
   }
 
   /**
-  * ارسال یک مخاطب 
-  * @see https://docs.bale.ai/#contact
-  */
+   * ارسال یک مخاطب
+   * @see https://docs.bale.ai/#contact
+   */
   sendContact(
     chatId: string | number,
     phoneNumber: string | number,
@@ -444,11 +444,10 @@ export class ApiClient {
     });
   }
 
-  
   /**
-  * برای اطلاع به کاربر در مورد اینکه عملیتاتی از سمت ربات در حال انجام است
-  * @see https://docs.bale.ai/#sendchataction
-  */
+   * برای اطلاع به کاربر در مورد اینکه عملیتاتی از سمت ربات در حال انجام است
+   * @see https://docs.bale.ai/#sendchataction
+   */
   sendChatAction(
     chatId: string | number,
     action: ChatActionsType
@@ -501,7 +500,7 @@ export class ApiClient {
 
   /**
    * این متد برای مسدود کردن کاربر در یک گروه یا یک کانال استفاده می‌شود
-   * @see https://docs.bale.ai/#banchatmember 
+   * @see https://docs.bale.ai/#banchatmember
    */
   banChatMember(chatId: string | number, userId: number): Promise<boolean> {
     return this.request('banChatMember', { chat_id: chatId, user_id: userId });
@@ -509,7 +508,7 @@ export class ApiClient {
 
   /**
    * این متد جهت خارج‌ کردن یک کاربر مسدودشده از حالت مسدود در یک گروه یا کانال استفاده می‌شوند
-   *  @see https://docs.bale.ai/#unbanchatmember 
+   *  @see https://docs.bale.ai/#unbanchatmember
    */
   unbanChatMember(
     chatId: string | number,
@@ -555,15 +554,15 @@ export class ApiClient {
     return this.request('setChatPhoto', { chat_id: chatId, photo });
   }
 
-  /** 
+  /**
    * این متد برای بازو به منظور ترک یک گروه، گروه یا کانال استفاده می‌شود
-   * @see https://docs.bale.ai/#leavechat 
+   * @see https://docs.bale.ai/#leavechat
    */
   leaveChat(chatId: string | number): Promise<boolean> {
     return this.request('leaveChat', { chat_id: chatId });
   }
 
-  /** 
+  /**
    * این متد به منظور دریافت اطلاعات به‌روز در مورد گفتگو (نام فعلی کاربر برای مکالمات یک به یک، نام کاربری فعلی یک کاربر، گروه یا کانال) استفاده می‌شود
    * @see https://docs.bale.ai/#getchat
    */
@@ -574,9 +573,9 @@ export class ApiClient {
     return new ChatFullInfo(result);
   }
 
-  /** 
+  /**
    * این متد به منظور دریافت لیست مدیران یک گفتگو استفاده می‌شود
-   * @see https://docs.bale.ai/#getchatadministrators 
+   * @see https://docs.bale.ai/#getchatadministrators
    */
   async getChatAdministrators(chatId: string | number): Promise<ChatMember[]> {
     const result = await this.request<ChatMemberPayload[]>(
@@ -586,9 +585,9 @@ export class ApiClient {
     return result.map(createChatMember);
   }
 
-  /** 
+  /**
    * این متد به منظور دریافت تعداد اعضای گفتگو استفاده می‌شود
-   * @see https://docs.bale.ai/#getchatmemberscount 
+   * @see https://docs.bale.ai/#getchatmemberscount
    */
   getChatMembersCount(chatId: string | number): Promise<number> {
     return this.request('getChatMembersCount', { chat_id: chatId });
@@ -596,7 +595,7 @@ export class ApiClient {
 
   /**
    * این متد به منظور دریافت اطلاعات یکی از اعضای گفتگو (گروه یا کانال) استفاده می‌شود
-   *  @see https://docs.bale.ai/#getchatmember 
+   *  @see https://docs.bale.ai/#getchatmember
    */
   async getChatMember(
     chatId: string | number,
@@ -609,9 +608,9 @@ export class ApiClient {
     return createChatMember(result);
   }
 
-  /** 
-   * با استفاده از این متد میتوانید یک پیام را به پیام های پین شده اضافه کنید. 
-   * @see https://docs.bale.ai/#pinchatmessage 
+  /**
+   * با استفاده از این متد میتوانید یک پیام را به پیام های پین شده اضافه کنید.
+   * @see https://docs.bale.ai/#pinchatmessage
    */
   pinChatMessage(chatId: string | number, messageId: number): Promise<boolean> {
     return this.request('pinChatMessage', {
@@ -642,7 +641,7 @@ export class ApiClient {
     return this.request('unpinAllChatMessages', { chat_id: chatId });
   }
 
-  /** 
+  /**
    * با استفاده از این متد میتوان عنوان چت را تغییر داد
    * @see https://docs.bale.ai/#setchattitle
    */
@@ -664,15 +663,15 @@ export class ApiClient {
     });
   }
 
-  /** 
-   * با استفاده از این متد میتوان عکس چت را حذف کرد 
+  /**
+   * با استفاده از این متد میتوان عکس چت را حذف کرد
    * @see https://docs.bale.ai/#deletechatphoto
    */
   deleteChatPhoto(chatId: string | number): Promise<boolean> {
     return this.request('deleteChatPhoto', { chat_id: chatId });
   }
 
-  /** 
+  /**
    * با استفاده از این متد می توان برای گروه لینک جدید ایجاد کرد.
    * @see https://docs.bale.ai/#createchatinvitelink
    */
@@ -680,9 +679,9 @@ export class ApiClient {
     return this.request('createChatInviteLink', { chat_id: chatId });
   }
 
-  /** 
+  /**
    * با استفاده از این متد میتوان لینک عضویت گروه را ابطال کرد
-   * @see https://docs.bale.ai/#revokechatinvitelink 
+   * @see https://docs.bale.ai/#revokechatinvitelink
    */
   revokeChatInviteLink(
     chatId: string | number,
@@ -695,16 +694,16 @@ export class ApiClient {
   }
 
   /**
-   * .با استفاده از این متد بازو می تواند برای یک چت لینک عضویت جدید ایجاد کند در صورتی که قبلا ایجاد شده باشد ابطال و جدید ساخته می شود 
+   * .با استفاده از این متد بازو می تواند برای یک چت لینک عضویت جدید ایجاد کند در صورتی که قبلا ایجاد شده باشد ابطال و جدید ساخته می شود
    *  @see https://docs.bale.ai/#exportchatinvitelin
    */
   exportChatInviteLink(chatId: string | number): Promise<unknown> {
     return this.request('exportChatInviteLink', { chat_id: chatId });
   }
 
-  /** 
+  /**
    * از این متد برای ویرایش پیام‌های متنی استفاده کنید.
-   * @see https://docs.bale.ai/#editmessagetext 
+   * @see https://docs.bale.ai/#editmessagetext
    */
   editMessageText(
     chatId: string | number,
@@ -742,7 +741,7 @@ export class ApiClient {
 
   /**
    * این متد برای ویرایش صفحه‌کلید یک پیام بدون تغییر در محتوای آن استفاده کنید.
-   *  @see https://docs.bale.ai/#editmessagereplymarkup 
+   *  @see https://docs.bale.ai/#editmessagereplymarkup
    */
   editMessageReplyMarkup(
     chatId: string | number,
@@ -765,10 +764,7 @@ export class ApiClient {
   }
 
   /** @see https://docs.bale.ai/#uploadstickerfile */
-  async uploadStickerFile(
-    userId: number,
-    sticker: InputFile
-  ): Promise<File> {
+  async uploadStickerFile(userId: number, sticker: InputFile): Promise<File> {
     const result = await this.request<FilePayload>('uploadStickerFile', {
       user_id: userId,
       sticker,

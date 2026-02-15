@@ -2,9 +2,9 @@
  * Types shared by keyboard markups (Bale Bot API).
  */
 
-import { InlineKeyboardMarkup } from "./InlineKeyboard";
-import { ReplyKeyboardMarkup } from "./ReplyKeyboard";
-import { ReplyKeyboardRemove } from "./ReplyKeyboardRemove";
+import { InlineKeyboardMarkup } from './InlineKeyboard';
+import { ReplyKeyboardMarkup } from './ReplyKeyboard';
+import { ReplyKeyboardRemove } from './ReplyKeyboardRemove';
 
 /** اطلاعات مینی‌اپی که با فشردن دکمه باز می‌شود */
 export interface WebAppInfo {
@@ -15,7 +15,6 @@ export interface WebAppInfo {
 export interface CopyTextButton {
   text: string;
 }
-
 
 export type ReplyMarkup =
   | InlineKeyboardMarkup

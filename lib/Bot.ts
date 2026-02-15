@@ -3,8 +3,7 @@ import { PollingOptions, UpdateHandler } from './updates/UpdateHandler';
 import { BaleError } from './errors';
 import type { Message } from './types/Message';
 import type { CallbackQuery } from './types/CallbackQuery';
-import { User, UserPayload } from './types';
-import { ReplyKeyboardMarkup } from './keyboards';
+import { User } from './types';
 import { ReplyMarkup } from './keyboards/types';
 
 const BALE_API_BASE = 'https://tapi.bale.ai/bot';
@@ -40,6 +39,10 @@ export class Bot {
   startPolling(options: PollingOptions = {}): Promise<void> {
     return this.updateHandler.startPolling(options);
   }
+  /** Return the instance of ApiClient */
+  getClient(): ApiClient {
+    return this.api;
+  }
 
   /** Stop long-polling. */
   stopPolling(): Promise<void> {
@@ -69,8 +72,8 @@ export class Bot {
     chatId: number,
     text: string,
     options?: {
-      reply_to_message_id?: number,
-      reply_markup?: ReplyMarkup
+      reply_to_message_id?: number;
+      reply_markup?: ReplyMarkup;
     }
   ): Promise<unknown> {
     return this.api.sendMessage(chatId, text, options);
@@ -102,6 +105,4 @@ export class Bot {
   onEditedMessage(handler: (message: Message) => void | Promise<void>): this {
     return this.on('edited_message', handler as (...args: unknown[]) => void);
   }
-
-  
 }

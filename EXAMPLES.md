@@ -17,10 +17,10 @@ node example.js
 
 Then open your bot in Bale and try:
 
-- `/start` – welcome message  
-- `/menu` – inline buttons (Option A / B / C)  
-- `/keys` – reply keyboard; "Hide keyboard" removes it  
-- Any other text – echo reply  
+- `/start` – welcome message
+- `/menu` – inline buttons (Option A / B / C)
+- `/keys` – reply keyboard; "Hide keyboard" removes it
+- Any other text – echo reply
 
 ---
 
@@ -48,8 +48,10 @@ const { Bot, inlineKeyboard } = require('balekit');
 const bot = new Bot(process.env.BALE_TOKEN);
 const chatId = 123456789;
 
-const kb = inlineKeyboard()
-  .addRow([{ text: 'Yes', callback_data: 'yes' }, { text: 'No', callback_data: 'no' }]);
+const kb = inlineKeyboard().addRow([
+  { text: 'Yes', callback_data: 'yes' },
+  { text: 'No', callback_data: 'no' },
+]);
 
 await bot.api.sendMessage(chatId, 'Continue?', { reply_markup: kb });
 ```
@@ -117,9 +119,9 @@ await query.askReview(5); // show review form after 5 seconds
 
 ## File overview
 
-| File        | Purpose                                      |
-|------------|-----------------------------------------------|
-| `example.js` | Runnable demo: messages, inline keys, reply keys, callbacks |
+| File          | Purpose                                                     |
+| ------------- | ----------------------------------------------------------- |
+| `example.js`  | Runnable demo: messages, inline keys, reply keys, callbacks |
 | `EXAMPLES.md` | This file: how to run the example and copy-paste snippets   |
 
 For full API (sendPhoto, getChat, payments, etc.) see `lib/api/Client.ts`.

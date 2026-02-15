@@ -14,19 +14,17 @@ export function preview(text: string, description: string): string {
   return `\`\`\`[${text}]${description}\`\`\``;
 }
 
-
-export class TextFormat{
-
-  text : string;
-  constructor(text: string){
+export class TextFormat {
+  text: string;
+  constructor(text: string) {
     this.text = text;
   }
 
- get italic(): string {
+  get italic(): string {
     return `_ ${this.text} _`;
   }
 
   get bold(): string {
-  return `* ${this.text} *`;
-}
+    return `* ${this.text} *`;
+  }
 }

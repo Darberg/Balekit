@@ -18,6 +18,8 @@ export class StickerSet {
     this.name = payload.name;
     this.title = payload.title;
     this.stickers = payload.stickers.map((p) => new Sticker(p));
-    this.thumbnail = payload.thumbnail ? new PhotoSize(payload.thumbnail) : null;
+    this.thumbnail = payload.thumbnail
+      ? new PhotoSize(payload.thumbnail)
+      : null;
   }
 }

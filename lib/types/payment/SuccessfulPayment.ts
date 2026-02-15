@@ -27,3 +27,19 @@ export interface SuccessfulPaymentPayload {
    */
   provider_payment_charge_id?: string;
 }
+
+export class SuccessfulPayment {
+  currency: string;
+  totalAmount: number;
+  invoicePayload: string;
+  telegramPaymentChargeId: string;
+  providePaymentChargeId: string | null;
+
+  constructor(payload: SuccessfulPaymentPayload) {
+    this.currency = payload.currency;
+    this.totalAmount = payload.total_amount;
+    this.invoicePayload = payload.invoice_payload;
+    this.telegramPaymentChargeId = payload.telegram_payment_charge_id;
+    this.providePaymentChargeId = payload.provider_payment_charge_id ?? null;
+  }
+}

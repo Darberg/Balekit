@@ -17,7 +17,9 @@ const {
 
 const token = process.env.BALE_TOKEN;
 if (!token) {
-  console.error('Set BALE_TOKEN in the environment (e.g. export BALE_TOKEN=your_token)');
+  console.error(
+    'Set BALE_TOKEN in the environment (e.g. export BALE_TOKEN=your_token)'
+  );
   process.exit(1);
 }
 
@@ -33,15 +35,22 @@ bot.onMessage(async (message) => {
 
   // Simple reply (uses message.reply when _bot is attached)
   if (text === '/start') {
-    await message.reply('Welcome! Send /menu for options or /keys for keyboards.');
+    await message.reply(
+      'Welcome! Send /menu for options or /keys for keyboards.'
+    );
     return;
   }
 
   if (text === '/menu') {
     const kb = inlineKeyboard()
-      .addRow([{ text: 'Option A', callback_data: 'opt_a' }, { text: 'Option B', callback_data: 'opt_b' }])
+      .addRow([
+        { text: 'Option A', callback_data: 'opt_a' },
+        { text: 'Option B', callback_data: 'opt_b' },
+      ])
       .addRow([{ text: 'Option C', callback_data: 'opt_c' }]);
-    await bot.api.sendMessage(chatId, 'Choose an option:', { reply_markup: kb });
+    await bot.api.sendMessage(chatId, 'Choose an option:', {
+      reply_markup: kb,
+    });
     return;
   }
 
@@ -49,12 +58,16 @@ bot.onMessage(async (message) => {
     const replyKb = keyboard()
       .addRow(['Button 1', 'Button 2'])
       .addRow(['Hide keyboard']);
-    await bot.api.sendMessage(chatId, 'Reply keyboard:', { reply_markup: replyKb });
+    await bot.api.sendMessage(chatId, 'Reply keyboard:', {
+      reply_markup: replyKb,
+    });
     return;
   }
 
   if (text === 'Hide keyboard') {
-    await bot.api.sendMessage(chatId, 'Keyboard removed.', { reply_markup: removeKeyboard() });
+    await bot.api.sendMessage(chatId, 'Keyboard removed.', {
+      reply_markup: removeKeyboard(),
+    });
     return;
   }
 
@@ -70,7 +83,11 @@ bot.onCallbackQuery(async (query) => {
   try {
     await query.answerCallbackQuery();
   } catch (err) {
-    if (err.message && (err.message.includes('query is too old') || err.message.includes('query ID is invalid'))) {
+    if (
+      err.message &&
+      (err.message.includes('query is too old') ||
+        err.message.includes('query ID is invalid'))
+    ) {
       return; // already answered or expired
     }
     throw err;

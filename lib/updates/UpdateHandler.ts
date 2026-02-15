@@ -4,7 +4,6 @@ import { CallbackQuery } from '../types/CallbackQuery';
 import type { Bot } from '../Bot';
 import type { UpdatePayload } from '../types/Update';
 
-
 const POLL_INTERVAL_MS = 1000;
 const DEFAULT_TIMEOUT = 30;
 
