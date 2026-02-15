@@ -1,0 +1,31 @@
+{
+  "name": "balekit",
+  "version": "1.0.0",
+  "description": "A library for creating bots in the Bale messenger (Bale Bot API)",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "tsc -w"
+  },
+  "keywords": [
+    "bale",
+    "bot",
+    "messenger",
+    "bale-messenger",
+    "api"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "eslint": "^10.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "prettier": "^3.8.1",
+    "typescript": "^5.3.0"
+  }
+}
