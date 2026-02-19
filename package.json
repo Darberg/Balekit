@@ -1,6 +1,6 @@
 {
   "name": "balekit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A library for creating bots in the Bale messenger (Bale Bot API)",
   "license": "GPL-3.0-only",
   "author": "darius",
