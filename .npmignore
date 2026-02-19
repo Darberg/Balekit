@@ -1,0 +1,11 @@
+lib/
+.eslintrc.json
+.prettierrc
+tsconfig.json
+example.js
+EXAMPLES.md
+.vscode/
+.git/
+node_modules/
+package-lock.json
+*.tgz
